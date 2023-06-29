@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Pop Slime Game</h1>
+    <img id="popcat" src="popcat.png" alt="Pop Cat" onclick="popCat()" class="animate-pop">
+    <div id="scoreboard">
+        <h2>Leaderboard Users</h2>
+        <ul id="leaderboardList"></ul>
+    </div>
+    <audio id="popSound" src="pop_sound.mp3"></audio>
+    <script>
+        function handleCredentialResponse(response) {
+            var credential = response.credential;
+            // Menggunakan credential untuk otentikasi dengan Firebase
+            firebase.auth().signInWithCredential(credential).catch(function(error) {
+                console.error(error);
+            });
+        }
+
+        displayLeaderboard(); // Memuat leaderboard saat halaman dimuat
+        announceWinner(); // Mengumumkan pemenang pop terbanyak pada tanggal 1 Januari saat halaman dimuat
+    </script>
+</body>
+</html>
