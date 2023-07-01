@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pop Slime Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Prize Claim</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>Pop Slime Game</h1>
-  <div id="game-container">
-    <!-- Tempat untuk menampilkan animasi slime -->
-    <img src="slime.png" id="game-container" alt="">
+  <div class="container">
+    <h1 class="text-center">Klaim Hadiah</h1>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h2>Klik Tombol Dibawah Ini Untuk Klaim Hadiah</h2>
+            <button class="btn btn-danger" id="jumpscareBtn">Claim!</button>
+          </div>
+        </div>
+        <div class="d-none" id="jumpscareContainer">
+          <img src="jumpscare-image.png" class="img-fluid">
+          <audio src="pop-sound.mp3" id="jumpscareAudio"></audio>
+        </div>
+      </div>
+    </div>
   </div>
-  <button id="pop-button" onclick="popSlime()">Pop Slime</button>
-  <audio id="pop-sound" src="pop-sound.mp3"></audio>
 
-  <!-- Firebase SDK dan konfigurasi -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="firebase-config.js"></script>
-
-  <!-- Main JavaScript -->
-  <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#jumpscareBtn').click(function() {
+        $('#jumpscareContainer').removeClass('d-none');
+        var audio = document.getElementById('jumpscareAudio');
+        audio.play();
+      });
+    });
+  </script>
 </body>
 </html>
